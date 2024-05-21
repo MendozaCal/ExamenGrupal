@@ -26,8 +26,8 @@ public class ShootPlayer : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && Delay >= 5)
         {
             GameObject obj = Instantiate(prefab2);
-            obj.transform.position = shootPoint.position;
-            obj.GetComponent<Bullets>().SetDirection(shootPoint.forward);
+            obj.transform.position = shootPoint2.position;
+            obj.GetComponent<Bullets>().SetDirection(shootPoint2.forward);
             Delay = 0;
         }
     }
