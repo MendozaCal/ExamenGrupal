@@ -38,13 +38,13 @@ namespace TMPro.Examples
                     //go.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
 
                     TextMeshPro textMeshPro = go.AddComponent<TextMeshPro>();
-                    //textMeshPro.FontAsset = Resources.Load("Fonts & Materials/LiberationSans SDF", typeof(TextMeshProFont)) as TextMeshProFont;
-                    //textMeshPro.anchor = AnchorPositions.Bottom;
+                    //textMeshProM.FontAsset = Resources.Load("Fonts & Materials/LiberationSans SDF", typeof(TextMeshProFont)) as TextMeshProFont;
+                    //textMeshProM.anchor = AnchorPositions.Bottom;
                     textMeshPro.fontSize = 96;
 
                     textMeshPro.text = "!";
                     textMeshPro.color = new Color32(255, 255, 0, 255);
-                    //textMeshPro.Text = "!";
+                    //textMeshProM.Text = "!";
 
 
                     // Spawn Floating Text

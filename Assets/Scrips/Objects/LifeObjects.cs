@@ -9,14 +9,7 @@ public class LifeObjects : HealthSystem
     [SerializeField] bool Wood = false;
     [SerializeField] bool Rock = false;
     [SerializeField] bool Metal = false;
-    protected override void Update()
-    {
-        if (Health <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-        isDropping();
-    }
+    
     protected override void isDropping()
     {
         if (Health <= 0 && Wood == true)

@@ -11,6 +11,9 @@ TagManager:
   - Metal
   - ButtonMina
   - ButtonGranja
+  - Flower
+  - Meat
+  - Diamond
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,11 @@ public class HealthSystem : MonoBehaviour
     {
         Health = Mathf.Max(Health, 0);
         Health = Mathf.Min(Health, 100);
+        if (Health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        isDropping();
     }
     protected virtual void isDropping() 
     {

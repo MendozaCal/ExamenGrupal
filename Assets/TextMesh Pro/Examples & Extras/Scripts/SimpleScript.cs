@@ -44,7 +44,7 @@ namespace TMPro.Examples
             //m_textMeshPro.enableCulling = true;
             m_textMeshPro.enableWordWrapping = false;
 
-            //textMeshPro.fontColor = new Color32(255, 255, 255, 255);
+            //textMeshProM.fontColor = new Color32(255, 255, 255, 255);
         }
 
 

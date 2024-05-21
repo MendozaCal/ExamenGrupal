@@ -15,19 +15,16 @@ public class Inventary : MonoBehaviour
     [Header("----Precio Mina----")]
     [SerializeField] protected float WoodPriceM = 10;
     [SerializeField] protected float RockPriceM = 5;
-    [SerializeField] protected float MetalPriceM = 0;
-    [SerializeField] protected float MoneyPriceM = 0;
-    [SerializeField] protected float DiamondPriceM = 0;
-    [SerializeField] protected TextMeshPro textMeshPro;
-    int contMejorasM = 0;
+
+    [SerializeField] protected TextMeshPro textMeshProM;
+    public int contMejorasM = 0;
+    bool DetectorMaxLevelM;
 
     [Header("----Precio Granja----")]
     [SerializeField] protected float WoodPriceG = 20;
-    [SerializeField] protected float RockPriceG = 0;
-    [SerializeField] protected float MetalPriceG = 0;
-    [SerializeField] protected float MoneyPriceG = 0;
-    [SerializeField] protected float DiamondPriceG = 0;
-    int contMejorasG = 0;
+    [SerializeField] protected TextMeshPro textMeshProG;
+    public int contMejorasG = 0;
+    bool DetectorMaxLevelG;
 
     [Header("----Estructuras----")]
     [SerializeField] GameObject Mina;
@@ -36,13 +33,23 @@ public class Inventary : MonoBehaviour
     {
         Mina.SetActive(false);
         Granja.SetActive(false);
-        textMeshPro.text = $"Wood = {WoodPriceM} \nRock = {RockPriceM} ";
+        contMejorasM = Mathf.Min(contMejorasM,10);
+        contMejorasG = Mathf.Min(contMejorasG, 10);
+        textMeshProM.text = $"Wood = {WoodPriceM} \nRock = {RockPriceM} ";
+        textMeshProG.text = $"Wood = {WoodPriceG}";
     }
     private void Update()
     {
-        textMeshPro.text = $"Wood = {WoodPriceM} \nRock = {RockPriceM} ";
+        WoodPriceM = Mathf.Round(WoodPriceM);
+        RockPriceM = Mathf.Round(RockPriceM);
+        WoodPriceG = Mathf.Round(WoodPriceG);
+        textMeshProM.text = $"Wood = {WoodPriceM} \nRock = {RockPriceM} ";
+        if (DetectorMaxLevelM == true)
+        {
+            textMeshProM.text = $"Wood = Max \nRock = Max";
+        }
+        textMeshProG.text = $"Wood = {WoodPriceG}";
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wood"))
@@ -69,14 +76,18 @@ public class Inventary : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("ButtonMina") && Rock >= RockPriceM && Wood >= WoodPriceM)
+        if (other.gameObject.CompareTag("ButtonMina") && Rock >= RockPriceM && Wood >= WoodPriceM && DetectorMaxLevelM == false)
         {
             Rock -= RockPriceM;
             Wood -= WoodPriceM;
             Mina.SetActive(true);
-            RockPriceM *= 1.25f;
             WoodPriceM *= 1.25f;
+            RockPriceM *= 1.25f;
             contMejorasM++;
+            if (contMejorasM >= 10)
+            {
+                DetectorMaxLevelM = true;
+            }
         }
         if (other.gameObject.CompareTag("ButtonGranja") &&  Wood >= WoodPriceG)
         {
