@@ -8,8 +8,11 @@ public class ShootPlayer : MonoBehaviour
     [SerializeField] private GameObject prefab2;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private Transform shootPoint2;
+    float Delay = 0;
+
     void Update()
     {
+        Delay += Time.deltaTime;
         Shoot();
     }
     void Shoot()
@@ -20,11 +23,12 @@ public class ShootPlayer : MonoBehaviour
             obj.transform.position = shootPoint.position;
             obj.GetComponent<Bullets>().SetDirection(shootPoint.forward);
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && Delay >= 5)
         {
             GameObject obj = Instantiate(prefab2);
             obj.transform.position = shootPoint.position;
             obj.GetComponent<Bullets>().SetDirection(shootPoint.forward);
+            Delay = 0;
         }
     }
 }
