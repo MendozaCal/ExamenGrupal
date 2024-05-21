@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour
@@ -9,7 +8,7 @@ public class Collectable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }

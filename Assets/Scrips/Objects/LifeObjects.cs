@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LifeObjects : HealthSystem
@@ -12,6 +11,10 @@ public class LifeObjects : HealthSystem
     [SerializeField] bool Metal = false;
     private void Update()
     {
+        if (Health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
         isDropping();
     }
     protected virtual void isDropping()
