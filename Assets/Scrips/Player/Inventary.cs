@@ -3,53 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Inventary : MonoBehaviour
+public class Inventary : Building
 {
-    [Header("----Inventario----")]
-    [SerializeField] protected float Wood = 0;
-    [SerializeField] protected float Rock = 0;
-    [SerializeField] protected float Metal = 0;
-    [SerializeField] protected float Money = 0;
-    [SerializeField] protected float Diamond = 0;
-
-    [Header("----Precio Mina----")]
-    [SerializeField] protected float WoodPriceM = 10;
-    [SerializeField] protected float RockPriceM = 5;
-
-    [SerializeField] protected TextMeshPro textMeshProM;
-    public int contMejorasM = 0;
-    bool DetectorMaxLevelM;
-
-    [Header("----Precio Granja----")]
-    [SerializeField] protected float WoodPriceG = 20;
-    [SerializeField] protected TextMeshPro textMeshProG;
-    public int contMejorasG = 0;
-    bool DetectorMaxLevelG;
-
-    [Header("----Estructuras----")]
-    [SerializeField] GameObject Mina;
-    [SerializeField] GameObject Granja;
-    void Start()
-    {
-        Mina.SetActive(false);
-        Granja.SetActive(false);
-        contMejorasM = Mathf.Min(contMejorasM,10);
-        contMejorasG = Mathf.Min(contMejorasG, 10);
-        textMeshProM.text = $"Wood = {WoodPriceM} \nRock = {RockPriceM} ";
-        textMeshProG.text = $"Wood = {WoodPriceG}";
-    }
-    private void Update()
-    {
-        WoodPriceM = Mathf.Round(WoodPriceM);
-        RockPriceM = Mathf.Round(RockPriceM);
-        WoodPriceG = Mathf.Round(WoodPriceG);
-        textMeshProM.text = $"Wood = {WoodPriceM} \nRock = {RockPriceM} ";
-        if (DetectorMaxLevelM == true)
-        {
-            textMeshProM.text = $"Wood = Max \nRock = Max";
-        }
-        textMeshProG.text = $"Wood = {WoodPriceG}";
-    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wood"))
@@ -67,35 +22,83 @@ public class Inventary : MonoBehaviour
         /*if (collision.gameObject.CompareTag("Money"))
         {
             Money++;
-        }
+        }*/
         if (collision.gameObject.CompareTag("Diamond"))
         {
             Diamond++;
-        }*/
+        }
     }
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("ButtonMina") && Rock >= RockPriceM && Wood >= WoodPriceM && DetectorMaxLevelM == false)
         {
-            Rock -= RockPriceM;
-            Wood -= WoodPriceM;
-            Mina.SetActive(true);
-            WoodPriceM *= 1.25f;
-            RockPriceM *= 1.25f;
-            contMejorasM++;
-            if (contMejorasM >= 10)
+            BuyMina();
+            LevelUpMina();
+        }
+        if (other.gameObject.CompareTag("ButtonGranja") && Wood >= WoodPriceG && DetectorMaxLevelF == false)
+        {
+            BuyFarm();
+            LevelUpFarm();
+        }
+    }
+    protected override void IsDropping()
+    {
+        if (MinaIsTrue == true)
+        {
+            TimerM += Time.deltaTime;
+            if (TimerM >= TimeToSpawnM)
             {
-                DetectorMaxLevelM = true;
+                GameObject obj = Instantiate(MaterialDropM);
+                obj.transform.position = DropPositionM.transform.position;
+                TimerM = 0;
             }
         }
-        if (other.gameObject.CompareTag("ButtonGranja") &&  Wood >= WoodPriceG)
+        if (FarmIsTrue == true)
         {
-            Wood -= WoodPriceG;
-            Granja.SetActive(true);
-            WoodPriceG *= 1.25f;
-            contMejorasG++;
+            TimerF += Time.deltaTime;
+            if (TimerF >= TimeToSpawnF)
+            {
+                GameObject obj = Instantiate(MaterialDropF[0]);
+                GameObject obj1 = Instantiate(MaterialDropF[1]);
+                obj.transform.position = DropPositionFMeat.transform.position;
+                obj1.transform.position = DropPositionFlower.transform.position;
+                TimerF = 0;
+            }
+        }       
+    }
+    void BuyMina()
+    {
+        Rock -= RockPriceM;
+        Wood -= WoodPriceM;
+        Mina.SetActive(true);
+    }
+    void BuyFarm()
+    {
+        Wood -= WoodPriceG;
+        Granja.SetActive(true);
+    }
+    void LevelUpMina()
+    {
+        WoodPriceM *= 1.25f;
+        RockPriceM *= 1.25f;
+        contMejorasM++;
+        MinaIsTrue = true;
+        TimeToSpawnM -= 2;
+        if (contMejorasM >= 10)
+        {
+            DetectorMaxLevelM = true;
         }
-
+    }
+    void LevelUpFarm()
+    {
+        WoodPriceG *= 1.25f;
+        contMejorasF++;
+        FarmIsTrue = true;
+        TimeToSpawnF -= 1;
+        if (contMejorasF >= 10)
+        {
+            DetectorMaxLevelF = true;
+        }
     }
 }
