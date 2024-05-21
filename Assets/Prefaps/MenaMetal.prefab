@@ -166,6 +166,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2361327422272992543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3844977312519359440}
+  m_Layer: 0
+  m_Name: DropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3844977312519359440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361327422272992543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.043, y: -0.526, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7052296147332358796}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2402284582393612650
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +540,7 @@ GameObject:
   - component: {fileID: 7052296147332358796}
   - component: {fileID: 5071962924069864422}
   - component: {fileID: 2604282798904598242}
+  - component: {fileID: 9146529650621630576}
   m_Layer: 0
   m_Name: MenaMetal
   m_TagString: Untagged
@@ -535,6 +567,7 @@ Transform:
   - {fileID: 9147861123873543237}
   - {fileID: 586473117880128059}
   - {fileID: 3438167129766624459}
+  - {fileID: 3844977312519359440}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5071962924069864422
@@ -571,11 +604,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  Damage: 0
+  Damage: 10
+  DamageEspecial: 50
   MaterialDrop:
   - {fileID: 4788422929470969951, guid: 0aea2bf86c3603545b18fb8da41b260c, type: 3}
   - {fileID: 6366768433667946551, guid: 1add2f89b52b52449b98c2618f682669, type: 3}
   - {fileID: 3287608886279284592, guid: b1537956ba2cfc741a3ec12e8cf0a597, type: 3}
+  DropPositon: {fileID: 3844977312519359440}
   Wood: 0
   Rock: 0
   Metal: 1
+--- !u!54 &9146529650621630576
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579694487797822598}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0

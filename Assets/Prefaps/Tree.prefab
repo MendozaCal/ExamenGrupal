@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 7445986026592959508}
   - component: {fileID: 8632478165130380205}
   - component: {fileID: 5752975565000278521}
+  - component: {fileID: -6911684743744724085}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -459,6 +460,7 @@ Transform:
   - {fileID: 5311767034372171334}
   - {fileID: 8583533382835046278}
   - {fileID: 6903784391421242021}
+  - {fileID: 4686704438448612615}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8632478165130380205
@@ -474,11 +476,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  Damage: 0
+  Damage: 10
+  DamageEspecial: 50
   MaterialDrop:
   - {fileID: 4788422929470969951, guid: 0aea2bf86c3603545b18fb8da41b260c, type: 3}
   - {fileID: 6366768433667946551, guid: 1add2f89b52b52449b98c2618f682669, type: 3}
   - {fileID: 3287608886279284592, guid: b1537956ba2cfc741a3ec12e8cf0a597, type: 3}
+  DropPositon: {fileID: 4686704438448612615}
   Wood: 1
   Rock: 0
   Metal: 0
@@ -503,6 +507,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.99252105, y: 3.9936438, z: 1.1165303}
   m_Center: {x: -0.28080142, y: -1.4968216, z: -1.0147038}
+--- !u!54 &-6911684743744724085
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448970101919929750}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &3120874095390267483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,6 +1115,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8113491573537807636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4686704438448612615}
+  m_Layer: 0
+  m_Name: DropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4686704438448612615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113491573537807636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.26, y: -3.2, z: -1.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7445986026592959508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8317271041343913718
 GameObject:
   m_ObjectHideFlags: 0
