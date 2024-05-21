@@ -6,6 +6,11 @@ TagManager:
   tags:
   - BulletNormal
   - BulletEspecial
+  - Wood
+  - Rock
+  - Metal
+  - ButtonMina
+  - ButtonGranja
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,7 @@ public class LifeObjects : HealthSystem
     [SerializeField] bool Wood = false;
     [SerializeField] bool Rock = false;
     [SerializeField] bool Metal = false;
-    private void Update()
+    protected override void Update()
     {
         if (Health <= 0)
         {
@@ -17,7 +17,7 @@ public class LifeObjects : HealthSystem
         }
         isDropping();
     }
-    protected virtual void isDropping()
+    protected override void isDropping()
     {
         if (Health <= 0 && Wood == true)
         {
