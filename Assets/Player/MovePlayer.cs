@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovePlayer : MoveController
 {
-    [SerializeField] protected float rotationSpeed;
+    [SerializeField] float rotationSpeed;
     protected override void Move()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
