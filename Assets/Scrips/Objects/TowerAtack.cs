@@ -11,7 +11,10 @@ public class TowerAtack : MonoBehaviour
     protected float cont;
     private void Awake()
     {
-        Enemy = GameObject.FindWithTag("SuicideEnemy").transform;
+        if (Enemy!=null)
+        {
+            Enemy = GameObject.FindWithTag("SuicideEnemy").transform;
+        }
     }
     void Update()
     {
