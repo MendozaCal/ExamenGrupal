@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] protected int Health;
+    [SerializeField] public int Health;
     [SerializeField] protected int Damage;
     [SerializeField] protected int DamageEspecial;
      protected virtual void Update()
@@ -20,16 +20,5 @@ public class HealthSystem : MonoBehaviour
     protected virtual void isDropping() 
     {
 
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("SuicideEnemy"))
-        {
-            Health -= 50;
-        }
-        if (collision.gameObject.CompareTag("MeleeEnemy"))
-        {
-            Health -= 10;
-        }
     }
 }

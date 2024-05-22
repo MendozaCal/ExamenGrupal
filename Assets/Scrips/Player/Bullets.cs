@@ -16,7 +16,6 @@ public class Bullets : MonoBehaviour
     {
         this.direction = direction;
     }
-
     void Update()
     {
         rb.velocity = direction * speed;

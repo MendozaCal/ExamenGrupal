@@ -20,6 +20,7 @@ TagManager:
   - Money
   - SuicideEnemy
   - MeleeEnemy
+  - BulletEnemy
   layers:
   - Default
   - TransparentFX
