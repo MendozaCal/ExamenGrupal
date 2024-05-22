@@ -2,21 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuicideEnemy : MoveController
+public class SuicideEnemy : ShortDistance
 {
-    protected override void Move()
+    private void OnCollisionEnter(Collision collider)
     {
-        if (Player != null && Vector3.Distance(transform.position, Player.position) >= 0)
-        {
-            Vector3 direction = Player.position - transform.position;
-            direction.Normalize();
-            transform.position += direction * maxSpeed * Time.deltaTime;
-            transform.LookAt(Player.position);
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collider.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject);
         }

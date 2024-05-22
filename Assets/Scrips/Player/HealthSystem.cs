@@ -25,6 +25,10 @@ public class HealthSystem : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SuicideEnemy"))
         {
+            Health -= 50;
+        }
+        if (collision.gameObject.CompareTag("MeleeEnemy"))
+        {
             Health -= 10;
         }
     }

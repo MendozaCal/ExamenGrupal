@@ -19,6 +19,7 @@ TagManager:
   - ButtonTorre
   - Money
   - SuicideEnemy
+  - MeleeEnemy
   layers:
   - Default
   - TransparentFX
