@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Inventary : Building
 {
@@ -41,6 +40,12 @@ public class Inventary : Building
             BuyFarm();
             LevelUpFarm();
         }
+        if (other.gameObject.CompareTag("ButtonTorre") && Diamond >= DiamiondPriceT && Metal >= MetalPriceT && Money >= MoneyPriceT && DetectorMaxLevelT == false)
+        {
+            BuyTower();
+            LevelUpTower();
+            
+        }
         if (other.gameObject.CompareTag("ButtonMeatStore") && Meat >= 10)
         {
             Meat -= 10;
@@ -51,10 +56,7 @@ public class Inventary : Building
             Flower -= 10;
             Money += 5;
         }
-        if (other.gameObject.CompareTag("ButtonTorre") && Diamond >= DiamiondPriceT && Metal >= MetalPriceT && Money >= MoneyPriceT && DetectorMaxLevelT == false )
-        {
 
-        }
     }
     protected override void IsDropping()
     {
@@ -79,7 +81,7 @@ public class Inventary : Building
                 obj1.transform.position = DropPositionFlower.transform.position;
                 TimerF = 0;
             }
-        }       
+        }
     }
     void BuyMina()
     {
@@ -91,6 +93,12 @@ public class Inventary : Building
     {
         Wood -= WoodPriceG;
         Granja.SetActive(true);
+    }
+    void BuyTower()
+    {
+        Diamond -= DiamiondPriceT;
+        Money -= MoneyPriceT;
+        Metal -= MetalPriceT;
     }
     void LevelUpMina()
     {
@@ -113,6 +121,23 @@ public class Inventary : Building
         if (contMejorasF >= 10)
         {
             DetectorMaxLevelF = true;
+        }
+    }
+    void LevelUpTower()
+    {
+        DiamiondPriceT *= 5;
+        MetalPriceT *= 5f;
+        MoneyPriceT *= 5f;
+        contMejorasT++;
+        Torre1.SetActive(true);
+        if (contMejorasT >= 2)
+        {
+            Torre2.SetActive(true);
+            if (contMejorasT >= 3)
+            {
+                Torre3.SetActive(true);
+                DetectorMaxLevelT = true;
+            }
         }
     }
 }

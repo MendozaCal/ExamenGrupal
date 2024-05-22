@@ -47,7 +47,9 @@ public class Building : MonoBehaviour
     [Header("----Estructuras----")]
     [SerializeField] protected GameObject Mina;
     [SerializeField] protected GameObject Granja;
-    [SerializeField] protected GameObject Torre;
+    [SerializeField] protected GameObject Torre1;
+    [SerializeField] protected GameObject Torre2;
+    [SerializeField] protected GameObject Torre3;
 
     [Header("----Inventario----")]
     [SerializeField] protected float Wood = 0;
@@ -59,11 +61,15 @@ public class Building : MonoBehaviour
     [SerializeField] protected float Flower = 0;
     void Start() 
     {
+        Torre1.SetActive(false);
+        Torre2.SetActive(false);
+        Torre3.SetActive(false);
         Mina.SetActive(false);
         Granja.SetActive(false);
         contMejorasM = Mathf.Min(contMejorasM, 10);
         contMejorasF = Mathf.Min(contMejorasF, 10);
         textMeshProM.text = $"Wood = {WoodPriceM} \nRock = {RockPriceM} ";
+        textMeshProT.text = $"Diamond = {DiamiondPriceT} \nMetal = {MetalPriceT}\nMoney = {MoneyPriceT} ";
         textMeshProF.text = $"Wood = {WoodPriceG}";
         textMeatPrice.text = $"10 x Meat =\n5 Coins";
         textFlowerPrice.text = $"10 x Flower =\n5 Coins";
@@ -80,6 +86,7 @@ public class Building : MonoBehaviour
         WoodPriceG = Mathf.Round(WoodPriceG);
         textMeshProM.text = $"Wood = {WoodPriceM} \nRock = {RockPriceM} ";
         textMeshProF.text = $"Wood = {WoodPriceG}";
+        textMeshProT.text = $"Diamond = {DiamiondPriceT} \nMetal = {MetalPriceT}\nMoney = {MoneyPriceT} ";
         if (DetectorMaxLevelM == true)
         {
             textMeshProM.text = $"Wood = Max \nRock = Max";
@@ -87,6 +94,10 @@ public class Building : MonoBehaviour
         if (DetectorMaxLevelF == true)
         {
             textMeshProF.text = $"Wood = Max \nRock = Max";
+        }
+        if (DetectorMaxLevelT == true)
+        {
+            textMeshProT.text = $"Diamond = Max \nMetal = Max\nMoney = Max";
         }
     }
     protected virtual void IsDropping()
