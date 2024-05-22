@@ -19,16 +19,16 @@ public class Inventary : Building
         {
             Metal++;
         }
-        /*if (collision.gameObject.CompareTag("Money"))
+        if (collision.gameObject.CompareTag("Money"))
         {
             Money++;
-        }*/
+        }
         if (collision.gameObject.CompareTag("Diamond"))
         {
             Diamond++;
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("ButtonMina") && Rock >= RockPriceM && Wood >= WoodPriceM && DetectorMaxLevelM == false)
@@ -40,6 +40,20 @@ public class Inventary : Building
         {
             BuyFarm();
             LevelUpFarm();
+        }
+        if (other.gameObject.CompareTag("ButtonMeatStore") && Meat >= 10)
+        {
+            Meat -= 10;
+            Money += 5;
+        }
+        if (other.gameObject.CompareTag("ButtonFlowerStore") && Flower >= 10)
+        {
+            Flower -= 10;
+            Money += 5;
+        }
+        if (other.gameObject.CompareTag("ButtonTorre") && Diamond >= DiamiondPriceT && Metal >= MetalPriceT && Money >= MoneyPriceT && DetectorMaxLevelT == false )
+        {
+
         }
     }
     protected override void IsDropping()

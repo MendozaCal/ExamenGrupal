@@ -29,16 +29,34 @@ public class Building : MonoBehaviour
     protected bool DetectorMaxLevelF;
     protected bool FarmIsTrue = false;
 
+    [Header("----Precio Torre----")]
+    [SerializeField] protected float TimerT = 0;
+    [SerializeField] protected float TimeToSpawnT = 40;
+    [SerializeField] protected float DiamiondPriceT = 10;
+    [SerializeField] protected float MetalPriceT = 5;
+    [SerializeField] protected float MoneyPriceT = 5;
+    [SerializeField] protected TextMeshPro textMeshProT;
+    public int contMejorasT = 0;
+    protected bool DetectorMaxLevelT;
+    protected bool TorreIsTrue = false;
+
+    [Header("----Venta----")]
+    [SerializeField] protected TextMeshPro textMeatPrice;
+    [SerializeField] protected TextMeshPro textFlowerPrice;
+
     [Header("----Estructuras----")]
     [SerializeField] protected GameObject Mina;
     [SerializeField] protected GameObject Granja;
+    [SerializeField] protected GameObject Torre;
 
     [Header("----Inventario----")]
     [SerializeField] protected float Wood = 0;
     [SerializeField] protected float Rock = 0;
     [SerializeField] protected float Metal = 0;
-    [SerializeField] protected float Money = 0;
     [SerializeField] protected float Diamond = 0;
+    [SerializeField] protected float Money = 0;
+    [SerializeField] protected float Meat = 0;
+    [SerializeField] protected float Flower = 0;
     void Start() 
     {
         Mina.SetActive(false);
@@ -47,6 +65,8 @@ public class Building : MonoBehaviour
         contMejorasF = Mathf.Min(contMejorasF, 10);
         textMeshProM.text = $"Wood = {WoodPriceM} \nRock = {RockPriceM} ";
         textMeshProF.text = $"Wood = {WoodPriceG}";
+        textMeatPrice.text = $"10 x Meat =\n5 Coins";
+        textFlowerPrice.text = $"10 x Flower =\n5 Coins";
     }
     protected void Update()
     {
