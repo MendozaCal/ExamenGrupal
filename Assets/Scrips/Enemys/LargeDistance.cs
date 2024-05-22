@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AtackTower : MoveController
+public class LargeDistance : MoveController
 {
     [SerializeField] protected GameObject prefab;
     [SerializeField] protected Transform shootPoint;
