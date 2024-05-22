@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiferentShoot : LargeDistance
+public class DiferentShoot : AtackTower
 {
     protected override void Move()
     {
