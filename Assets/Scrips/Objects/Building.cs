@@ -74,7 +74,7 @@ public class Building : MonoBehaviour
         textMeatPrice.text = $"10 x Meat =\n5 Coins";
         textFlowerPrice.text = $"10 x Flower =\n5 Coins";
     }
-    protected void Update()
+    protected void FixedUpdate()
     {
         textManager();
         IsDropping();

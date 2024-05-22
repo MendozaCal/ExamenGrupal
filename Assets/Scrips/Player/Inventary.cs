@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Inventary : Building
 {
+    private void Update()
+    {
+        if (Money >= 100)
+        {
+            SceneManager.LoadScene(4);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wood"))

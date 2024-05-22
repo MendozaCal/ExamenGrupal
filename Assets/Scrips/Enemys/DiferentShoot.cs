@@ -13,7 +13,7 @@ public class DiferentShoot : LargeDistance
             transform.position += direction * maxSpeed * Time.deltaTime;
             transform.LookAt(Player.position);
         }
-        if (Vector3.Distance(transform.position, Player.position) <= distanceAtack)
+        if (Player != null && Vector3.Distance(transform.position, Player.position) <= distanceAtack)
         {
             Vector3 direction = Player.position - transform.position;
             Vector3 separation = new Vector3(0, direction.x, -direction.z);

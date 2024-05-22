@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthPlayer : HealthSystem
 {
+    private void Update()
+    {
+        if (Health <= 0)
+        {
+            SceneManager.LoadScene(3);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("SuicideEnemy"))
@@ -21,6 +29,6 @@ public class HealthPlayer : HealthSystem
         {
             Health -= 10;
         }
-        
     }
+    
 }

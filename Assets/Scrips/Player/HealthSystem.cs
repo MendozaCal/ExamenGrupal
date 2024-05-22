@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] public int Health;
+    [SerializeField] protected int Health;
     [SerializeField] protected int Damage;
     [SerializeField] protected int DamageEspecial;
-     protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         Health = Mathf.Max(Health, 0);
-        Health = Mathf.Min(Health, 100);
+        Health = Mathf.Min(Health, 1000);
         if (Health <= 0)
         {
             Destroy(this.gameObject);
